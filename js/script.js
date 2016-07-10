@@ -2,7 +2,11 @@
 // when user clicks anywhere on the button, the "printQuote" function is called
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 //event listener to stop the automatic load of quotes calling the 'clear()' function
+//on mouse over the button 
 document.getElementById('loadQuote').addEventListener("mouseover", clear, false);
+//event listener to start the automatic load of quotes calling the 'start()' function after it has been stopped
+//on mouse out of the button 
+document.getElementById('loadQuote').addEventListener("mouseout", start, false);
 
 
 var quotes;
@@ -144,17 +148,19 @@ function printQuote(){
     }
     if (selectedYear !== "" && selectedCitation !== "" ) {
       //Display all the span elements for both the citation and year if both the year and citation are not empty strings
-     quoteData += '<span class="citation">'+ selectedCitation +'</span>';
+      quoteData += '<span class="citation">'+ selectedCitation +'</span>';
       quoteData += '<span class="year">'+selectedYear+'</span></p>';
     }
 
     quoteLocation.innerHTML =  quoteData;      //and using the innerHTML property to write the quote data to webpage
 }
 
-
 var IntervalId;
-IntervalId = setInterval(function(){printQuote()}, 30000);    //refresh to print a new Quote after 30000 milliseconds (30 seconds)
+function start(){
+  IntervalId = setInterval(function(){printQuote()}, 30000);    //refresh to print a new Quote after 30000 milliseconds (30 seconds)
+}
 
+start();  //Start function which changes the quote  
 
 function clear(){
   clearInterval(IntervalId);    // clear the auto refresh t manaully change the quote on mouse over the load quote button
