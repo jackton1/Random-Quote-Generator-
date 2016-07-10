@@ -12,6 +12,17 @@ body {
   width: 80%;
   line-height: .5;
 }
+.tag:before {
+  content: "Tag: ";
+  top: .15em;
+  left: -.1em;
+}
+.tag {
+  font-size: 1.25rem;
+}
+.tag:after {
+   content: ".";
+}
 .quote {
   font-size: 4rem;
   font-weight: 400;
@@ -36,7 +47,7 @@ body {
   position: absolute;
 }
 .source {
-  font-size: 1.25rem;;
+  font-size: 1.25rem;
   letter-spacing: 0.05em;
   line-height: 1.1;
   text-align: right;
