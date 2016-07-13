@@ -2,10 +2,10 @@
 // when user clicks anywhere on the button, the "printQuote" function is called
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 //event listener to stop the automatic load of quotes calling the 'clear()' function
-//on mouse over the button 
+//on mouse over the button
 document.getElementById('loadQuote').addEventListener("mouseover", clear, false);
 //event listener to start the automatic load of quotes calling the 'start()' function after it has been stopped
-//on mouse out of the button 
+//on mouse out of the button
 document.getElementById('loadQuote').addEventListener("mouseout", start, false);
 
 
@@ -37,7 +37,7 @@ quotes =  [
        tags:"Technology"
      },
      {
-       quote:"Nanotechnology will let us build computers that are incredibly powerful. We'll have more power in the volume of a sugar cube than exists in the entire world today.",
+       quote:"Nanotechnology will let us build computers that are incredibly powerful. We'll have more power in the volume of a sugar cube that exists in the entire world today.",
        source:"Ralph Merkle",
        citation:"",
        year:2007,
@@ -79,18 +79,18 @@ function getRandomQuote(){
     var i;
     var chosenquote;
     var randomnumber;
-    randomnumber = Math.floor(Math.random() * quotes.length);              //Comment out this section 
-    chosenquote = quotes[randomnumber];                                    //to get one quote without repetition
+    //randomnumber = Math.floor(Math.random() * quotes.length);              //Comment out this section
+    //chosenquote = quotes[randomnumber];                                    //to get one quote without repetition
 
-    /*Comment out the randomnumber and chosenquote above and Uncomment this secion 
+    /*Comment out the randomnumber and chosenquote above and Uncomment this secion
      *to get a single quote once and it will reset to the beginning when the end of the quotes have been reached */
-    
-    // chosenquote = quotes[singlequote];
-    // singlequote += 1;
-    // if (singlequote == quotes.length){
-    //   delete singlequote;
-    //   singlequote = 0;
-    // }
+
+    chosenquote = quotes[singlequote];
+    singlequote += 1;
+    if (singlequote == quotes.length){
+      delete singlequote;
+      singlequote = 0;
+    }
 
     return chosenquote;
 }
@@ -104,16 +104,16 @@ function printQuote(){
     var selectedTag;
     var quoteLocation;
     var quoteData = "";
-    
+
     var message = getRandomQuote();     //Call the getRandomQuote() funciton which returns a random quote object from the quotes array of objects
 
     //Change the Background color each time the button is clicked rgb(111,111,111) using the Math.random() to get a random value from 0-1 and Math.floor() to round it down
     var colors = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
     document.getElementsByTagName('body')[0].style.backgroundColor = colors; //select the body tag name and using [0] selects the first body tag in the document
 
-    
-    quoteLocation= document.getElementById('quote-box');    //select the quote-box div 
-    
+
+    quoteLocation= document.getElementById('quote-box');    //select the quote-box div
+
     selectedQuote = message.quote;      //selecting the quote property from the randomly chosen Quote object
 
     selectedSource = message.source;      //selecting the source property from the randomly chosen Quote object
@@ -121,7 +121,7 @@ function printQuote(){
     selectedCitation = message.citation;    //selecting the citation property from the randomly chosen Quote object
 
     selectedYear = message.year;      //selecting the year property from the randomly chosen Quote object
-     
+
     selectedTag =  message.tags;     //selecting the tags property from the randomly chosen Quote object
 
      //format the quoteData with the tags the quote, source year and citation from the quotes array of objects
@@ -131,7 +131,7 @@ function printQuote(){
     if (selectedTag !== ""){
       quoteData = '<p class="tag">'+selectedTag+'</p>';   //add the tag span if its not an empty string
     }
-   
+
     quoteData += '<p class="quote">'+selectedQuote +'</p>';
     quoteData += '<p class="source">'+  selectedSource ;
 
@@ -160,7 +160,7 @@ function start(){
   IntervalId = setInterval(function(){printQuote()}, 30000);    //refresh to print a new Quote after 30000 milliseconds (30 seconds)
 }
 
-start();  //Start function which changes the quote  
+start();  //Start function which changes the quote
 
 function clear(){
   clearInterval(IntervalId);    // clear the auto refresh t manaully change the quote on mouse over the load quote button
