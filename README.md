@@ -1,6 +1,6 @@
 # Random-Quote-Generator
 
-Random quote generator is a Web based project to display quotations on the screen after a button on the page is clicked: 
+Using the Math.Random function generate a random qoute object.
 
 for example, 
 
